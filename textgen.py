@@ -36,6 +36,8 @@ def create_text(chain, start=None, length=10):
     new_text = state
     for _ in range(length):
         possibilities = list(chain[state].keys())
+        if not possibilities:
+            break
         weights = list(chain[state].values())
         state = choices(possibilities, weights=weights)[0]
         new_text += " " + state
